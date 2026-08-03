@@ -1,3 +1,3 @@
-import { Controller } from "./controller.js";
+import { Presenter } from "./presenter.js";
 
-const app = new Controller();
+const app = new Presenter();
