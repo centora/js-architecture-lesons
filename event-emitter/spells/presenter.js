@@ -9,6 +9,7 @@ export class Presenter {
         this.model = new Model()
 
         this.emitter = emitter;
+        this.emitter.on('SEARCH_DATA_BY_VALUE', this.onSearchSpells);
     }
 
     onLoadSpellsButton = async () => {
@@ -24,6 +25,18 @@ export class Presenter {
         this.view.hideSpells()
     }
 
-    onSearchFormSubmit = (value) => {
-        this.emitter.emit('SEARCH_CHARACTERS', value);
-    }}
+    onSearchSpells = async(searchValue) => {
+        let spells = this.model.getSpells();
+        if(spells.length === 0) {
+            await this.model.loadSpells();
+            spells = this.model.getSpells();
+        }
+
+        const searchedSpells = spells.filter((spell) => {
+            return spell.spell.toLowerCase().includes(searchValue.toLowerCase()) ||
+            spell.use.toLowerCase().includes(searchValue.toLowerCase()) 
+        })
+
+        this.emitter.emit('SEARCH_SPELLS_RESULT', searchedSpells);
+    }
+}

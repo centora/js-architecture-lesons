@@ -9,15 +9,6 @@ export class View {
         this.hideSpellsButton.addEventListener('click', onHideSpellsButton);
 
         this.spellsList = document.querySelector('.spells-list');
-
-        this.searchCharacterForm = this.app.querySelector('.search-character-form');
-        this.searchCharacterInput = this.app.querySelector('#searchCharacterInput');
-        this.searchCharacterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            onSearchFormSubmit(this.searchCharacterInput.value);
-        });
-
-
     }
 
     renderSpells = (spells) => {

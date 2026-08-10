@@ -5,7 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MVP Example</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Event Emitter Example</title>
 </head>
 <body>
     <div id="root">
@@ -21,6 +23,9 @@
         <br>
         <br>
 
+        <ul class="spells-list"></ul>
+        <ul class="characters-list"></ul>
+
         <form class="search-character-form">
             <label for="searchCharacterInput"></label>
             <input type="text" placeholder="Search Character" id="searchCharacterInput" />
@@ -28,9 +33,24 @@
                 <button class="search-button" type="submit">Search</button>
             </div>
         </form>
+        <div class="search-results">
+            <div class="searched-characters">
+                <h3>Characters</h3>
+                <ul class="searched-characters-list"></ul>
+            </div>
 
-        <ul class="spells-list"></ul>
-        <ul class="characters-list"></ul>
+            <div class="searched-houses">
+                <h3>Houses</h3>
+                <ul class="searched-houses-list"></ul>
+            </div>
+
+            <div class="searched-spells">
+                <h3>Spells</h3>
+                <ul class="searched-spells-list"></ul>
+            </div>
+            
+        </div>
+
     </div>
 
     <script type="module" src="./index.js"></script>

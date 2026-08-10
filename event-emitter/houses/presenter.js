@@ -8,6 +8,7 @@ export class Presenter {
         this.view = new View(this.onChooseHouse);
 
         this.onLoadHouses();
+        this.emitter.on('SEARCH_DATA_BY_VALUE', this.onSearchHouses);
 
     }
 
@@ -23,5 +24,20 @@ export class Presenter {
 
     onChooseHouse = (house ) => {
         this.emitter.emit('FILTER_CHARACTERS', house);
+    }
+
+    onSearchHouses = async(searchValue) => {
+        let houses = this.model.getHouses();
+        if(houses.length === 0) {
+            await this.model.loadHouses();
+            houses = this.model.getHouses();
+        }
+
+        const searchedCHouses = houses.filter((house) => {
+            return house.house.toLowerCase().includes(searchValue.toLowerCase()) || 
+            house.founder.toLowerCase().includes(searchValue.toLowerCase()) 
+        })
+
+        this.emitter.emit('SEARCH_HOUSES_RESULT', searchedCHouses);
     }
 }

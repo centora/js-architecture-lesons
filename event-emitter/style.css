@@ -1,0 +1,9 @@
+.search-results {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.search-results > div {
+    flex: 1;
+}

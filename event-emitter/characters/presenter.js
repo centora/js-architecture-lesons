@@ -8,7 +8,7 @@ export class Presenter {
         this.view = new View(this.onLoadCharacters);
 
         this.emitter.on('FILTER_CHARACTERS', this.onFilterCharacters);
-        this.emitter.on('SEARCH_CHARACTERS', this.onSearchCharacters)
+        this.emitter.on('SEARCH_DATA_BY_VALUE', this.onSearchCharacters);
     }
     onLoadCharacters = async () => {
         let characters = this.model.getCharacters();
@@ -43,7 +43,7 @@ export class Presenter {
             return character.fullName.toLowerCase().includes(searchValue.toLowerCase())
         })
 
-        this.view.renderCharacters(searchedCharacters);
+        this.emitter.emit('SEARCH_CHARACTERS_RESULT', searchedCharacters);
     }
 }
 
