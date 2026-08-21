@@ -18,7 +18,7 @@ export class Presenter {
             await this.model.loadHouses();
             houses = this.model.getHouses();
         }
-
+        
         this.view.renderHouses(houses);
     }
 

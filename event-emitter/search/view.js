@@ -1,6 +1,6 @@
 import { List } from "../components/List/List.js";
 export class View {
-    constructor (onSearchFormSubmit) {
+    constructor (onSearchFormSubmit, onSortList) {
         this.app = document.querySelector('#root');
         this.searchCharacterForm = this.app.querySelector('.search-character-form');
         this.searchCharacterInput = this.app.querySelector('#searchCharacterInput');
@@ -8,6 +8,13 @@ export class View {
             e.preventDefault();
             onSearchFormSubmit(this.searchCharacterInput.value);
         });
+
+        this.sortCharactersButtons = this.app.querySelectorAll('.sort-buttons');
+        this.sortCharactersButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                onSortList(button.dataset.sort, button.dataset.type)
+            })
+        })
 
         this.searchedCharactersList = this.app.querySelector('.searched-characters-list');
         this.searchedHousesList = this.app.querySelector('.searched-houses-list');
