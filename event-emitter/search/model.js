@@ -7,22 +7,20 @@ export class Model {
 
     setCharacters = (characters) => {
         this.characters = characters
-        console.log(characters);
     }
 
     setHouses = (houses) => {
         this.houses = houses;
-        console.log(houses);
 
     }
 
     setSpells = (spells) => {
         this.spells = spells;
-        console.log(spells);
     }
 
     getSortedData = (sort, type) => {
         let data = [];
+
         if(type === 'characters') {
             data = this.characters;
         }

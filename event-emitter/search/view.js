@@ -1,4 +1,5 @@
 import { List } from "../components/List/List.js";
+import { CharacterName } from "../components/CharacterName/CharacterName.js";
 export class View {
     constructor (onSearchFormSubmit, onSortList) {
         this.app = document.querySelector('#root');
@@ -24,9 +25,8 @@ export class View {
 
     renderCharacters = (characters) => {
         const list = new List(this.searchedCharactersList, characters, (li, character) => {
-            const characterName = document.createElement('span');
-            characterName.textContent = character.fullName;
-            li.appendChild(characterName);
+            const characterName = new CharacterName(character, this.onFavorite)
+            li.appendChild(characterName.render());
         })
 
         list.render();

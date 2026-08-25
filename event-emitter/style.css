@@ -7,3 +7,14 @@
 .search-results > div {
     flex: 1;
 }
+
+.favorite-button {
+    background-color: transparent;
+    border: none;
+    color: #cccccc;
+    cursor: pointer;
+}
+
+.favorite-button.active {
+    color: #ec682f;
+}
