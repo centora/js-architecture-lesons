@@ -7,11 +7,8 @@ export class CharacterName {
     }
 
     createElem(elem = 'span', content = '') {
-        console.log('create element: ', elem);
         const htmlElem = document.createElement(elem);
-        console.log('htmlElem: ', htmlElem);
         htmlElem.textContent = content;
-        console.log('htmlElem2: ', htmlElem);
         return htmlElem;
     }
 
@@ -21,6 +18,7 @@ export class CharacterName {
         const favButton = this.createElem('button', '☆');
         favButton.classList.add('favorite-button');
         favButton.addEventListener('click', () => {
+            console.log(this.isFavorite);
             this.onFavorite(this.character);
         });
 

@@ -5,10 +5,11 @@ export class Presenter {
     constructor(emitter) {
         this.emitter = emitter;
         this.model = new Model();
-        this.view = new View(this.onLoadCharacters);
+        this.view = new View(this.onLoadCharacters, this.onFavorite);
 
         this.emitter.on('FILTER_CHARACTERS', this.onFilterCharacters);
         this.emitter.on('SEARCH_DATA_BY_VALUE', this.onSearchCharacters);
+        this.emitter.on('FAVORITES_UPDATED', this.onFavoritesUpdated);
     }
     onLoadCharacters = async () => {
         let characters = this.model.getCharacters();
@@ -44,6 +45,16 @@ export class Presenter {
         })
 
         this.emitter.emit('SEARCH_CHARACTERS_RESULT', searchedCharacters);
+    }
+
+    onFavorite = (character) => {
+        this.emitter.emit('TOGGLE_CHARACTER_FAVORITE', character);
+    }
+
+    onFavoritesUpdated = (favorites) => {
+        console.log('characters received favorites:', favorites);
+        let characters = this.model.getCharacters();
+        this.view.renderCharacters(characters, favorites);
     }
 }
 
