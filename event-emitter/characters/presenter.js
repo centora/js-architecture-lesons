@@ -52,7 +52,6 @@ export class Presenter {
     }
 
     onFavoritesUpdated = (favorites) => {
-        console.log('characters received favorites:', favorites);
         let characters = this.model.getCharacters();
         this.view.renderCharacters(characters, favorites);
     }

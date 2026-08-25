@@ -1,8 +1,10 @@
 import { List } from "../components/List/List.js";
 import { CharacterName } from "../components/CharacterName/CharacterName.js";
 export class View {
-    constructor (onSearchFormSubmit, onSortList) {
+    constructor (onSearchFormSubmit, onSortList, onFavorite) {
         this.app = document.querySelector('#root');
+        this.favorites = [];
+        this.onFavorite = onFavorite;
         this.searchCharacterForm = this.app.querySelector('.search-character-form');
         this.searchCharacterInput = this.app.querySelector('#searchCharacterInput');
         this.searchCharacterForm.addEventListener('submit', (e) => {
@@ -23,9 +25,13 @@ export class View {
     }
 
 
-    renderCharacters = (characters) => {
+    renderCharacters = (characters, favorites = this.favorites) => {
+        this.favorites = favorites;
         const list = new List(this.searchedCharactersList, characters, (li, character) => {
-            const characterName = new CharacterName(character, this.onFavorite)
+            const isFavorite = this.favorites.some(char => {
+            return char.index === character.index
+        });
+            const characterName = new CharacterName(character, this.onFavorite, 'span', isFavorite);
             li.appendChild(characterName.render());
         })
 

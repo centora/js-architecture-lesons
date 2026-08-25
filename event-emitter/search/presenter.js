@@ -4,12 +4,14 @@ export class Presenter {
     constructor(emitter) {
         this.emitter = emitter;
         this.model = new Model();
-        this.view = new View(this.onSearchFormSubmit, this.onSortList);
+        this.view = new View(this.onSearchFormSubmit, this.onSortList, this.onFavorite);
 
         this.emitter.on('SEARCH_CHARACTERS_RESULT', this.onCharactersResult);
         this.emitter.on('SEARCH_HOUSES_RESULT', this.onHousesResult);
         this.emitter.on('SEARCH_SPELLS_RESULT', this.onSpellsResult);
 
+
+        this.emitter.on('FAVORITES_UPDATED', this.onFavoritesUpdated);
     }
 
 
@@ -44,5 +46,14 @@ export class Presenter {
             this.view.renderHouses(sortedData);
         }
             
+    }
+
+    onFavorite = (character) => {
+        this.emitter.emit('TOGGLE_CHARACTER_FAVORITE', character);
+    }
+
+    onFavoritesUpdated = (favorites) => {
+        let characters = this.model.getCharacters();
+        this.view.renderCharacters(characters, favorites);
     }
 }

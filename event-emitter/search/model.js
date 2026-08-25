@@ -5,6 +5,10 @@ export class Model {
         this.houses= [];
     }
 
+    getCharacters = () => {
+        return this.characters;
+    }
+
     setCharacters = (characters) => {
         this.characters = characters
     }
