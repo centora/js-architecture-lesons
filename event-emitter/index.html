@@ -11,6 +11,12 @@
 </head>
 <body>
     <div id="root">
+        <div class="header">
+            <h1>Harry Potter App</h1>
+            <button class="favorites-button">
+                ★ Favorites (<span class="favorites-count">0</span>)
+            </button>
+        </div>
         <ul class="houses-list"></ul>
         <br>
         <br>
@@ -61,6 +67,20 @@
                 <ul class="searched-spells-list"></ul>
             </div>
             
+        </div>
+
+        <div class="favorites-modal hidden">
+  
+                <div class="favorites-modal-overlay">
+
+                </div>
+                <div class="favorites-modal-content">
+                    <button class="favorites-modal-close">×</button>
+
+                    <h2>Favorites</h2>
+
+                    <ul class="favorites-list"></ul>
+                </div>
         </div>
 
     </div>

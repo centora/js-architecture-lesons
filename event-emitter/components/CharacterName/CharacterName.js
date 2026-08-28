@@ -1,5 +1,6 @@
 export class CharacterName {
-    constructor(character, onFavorite, characterNameTag = 'span', isFavorite = false) {
+    constructor(character, onFavorite, 
+        characterNameTag = 'span', isFavorite = false) {
         this.character = character;
         this.characterNameTag = characterNameTag;
         this.onFavorite = onFavorite;
@@ -18,7 +19,6 @@ export class CharacterName {
         const favButton = this.createElem('button', '☆');
         favButton.classList.add('favorite-button');
         favButton.addEventListener('click', () => {
-            console.log(this.isFavorite);
             this.onFavorite(this.character);
         });
 

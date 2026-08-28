@@ -18,3 +18,80 @@
 .favorite-button.active {
     color: #ec682f;
 }
+
+.favorites-modal {
+
+}
+.favorites-modal.hidden {
+    display: none;
+}
+.favorites-modal-overlay {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(119, 114, 114, 0.5);
+}
+
+.favorites-modal-content {
+    z-index: 11;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    max-width: 90%;
+    width: 600px;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 15px;
+    height: 80vh;
+}
+.favorites-modal-close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    border-radius: 20px;
+    border: 1px solid  #cccccc;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666666;
+}
+.favorites-modal-close:hover {
+    color: #000000;
+}
+
+.favorites-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.favorites-list li {
+    position: relative;
+    padding-left: 80px;
+    min-height: 100px;
+
+}
+.favorites-list li:hover {
+    background: rgba(184, 184, 184, 0.243);
+}
+.favorites-list li  img{
+    width: auto;
+    height: 80px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.favorites-list li .delete-favorite-button {
+    position: absolute;
+    cursor: pointer;
+    padding: 20px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
