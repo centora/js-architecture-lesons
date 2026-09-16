@@ -11,6 +11,7 @@ export class TodoActions {
     }
 
     addTodo = (text) => {
+        console.log(text);
        this.dispatcher.dispatch({
         type: ActionsTypes.ADD_TODO,
         payload: { text }

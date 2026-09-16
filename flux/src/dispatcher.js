@@ -6,7 +6,7 @@ export class Dispatcher{
         this.listeners.forEach(listener => listener(action));
     }
 
-    registerListener(listener) {
-        this.listener.push(listener);
+    registerListener = (listener)  => {
+        this.listeners.push(listener);
     }
 }

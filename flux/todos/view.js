@@ -20,24 +20,26 @@ export class View {
         });
   
         this.filterButtons.forEach((button) => {
-            button.addEventListener('click', this.onFilter(button.dataset.filter));
+            
+            button.addEventListener('click', () => {
+                this.onFilter(button.dataset.filter)
+            });
         });
 
     }
 
-    render = () => {
+    render = ({todos, filter}) => {
         this.list.innerHTML = '';
-        let todoListString = '';
 
-        if(todoListString.length === 0) {
+        if(todos.length === 0) {
             this.list.appendChild(this.createEmptyElement());
         } else {
-            todoListString.forEach((todo) => {
+            todos.forEach((todo) => {
                 this.list.appendChild(this.createTodoElement(todo));
             })
         }
 
-        this.count.copntentText = `${todoListString.length} item${todoListString.length !== 1 ? 's' : ''} left`;
+        this.count.textContent = `${todos.length} item${todos.length !== 1 ? 's' : ''} left`;
 
         this.filterButtons.forEach((button) => {
             button.classList.toggle('active', button.dataset.filter === filter);
@@ -57,7 +59,7 @@ export class View {
         const li = document.createElement('li');
         li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
 
-        const checkbox = document.createElement('inout');
+        const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = todo.completed;
         checkbox.addEventListener('change', () => {
