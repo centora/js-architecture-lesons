@@ -7,14 +7,17 @@ import Footer from '../Footer/Footer';
 
 import './TodoApp.css';
 import { ACTIVE, COMPLETED, ALL } from '../../constants';
+import LoadedTodos from '../LoadedTodos/LoadedTodos';
+
+type IFilter = ALL | ACTIVE | COMPLETED;
 
 const TodoApp = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
-    const [filter, setFilter] = useState<string>(ALL)
+    const [filter, setFilter] = useState<IFilter>(ALL)
 
     const onAddTodo = (text: string) => {
         const newTodo: ITodo = {
-            id: todos.length + 1,
+            id: Date.now().toString(16),
             text,
             completed: false
         }
@@ -22,7 +25,9 @@ const TodoApp = () => {
         setTodos([...todos, newTodo]);
     }
 
-    const onToggleTodo = (id: number) => {
+    //https://dummyjson.com/products
+
+    const onToggleTodo = (id: number | string) => {
         const updatedTodos = todos.map(todo => {
             if(todo.id === id) {
                 return {
@@ -35,13 +40,13 @@ const TodoApp = () => {
         setTodos(updatedTodos);
     }
 
-    const onDeleteTodo = (id: number) => {
+    const onDeleteTodo = (id: number | string) => {
         const updatedTodos = todos.filter(t => t.id !== id);
         setTodos(updatedTodos)
     }
 
 
-    const onFilter = (filter: string) => {
+    const onFilter = (filter: IFilter) => {
         setFilter(filter);
     }
 
@@ -70,6 +75,7 @@ const TodoApp = () => {
                 onFilter={onFilter}
                 activeFilter={filter}
             />
+            <LoadedTodos/>
         </>
     )
 }

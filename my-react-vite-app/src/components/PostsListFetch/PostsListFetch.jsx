@@ -12,7 +12,7 @@ const PostsListFetch = () => {
             setLoading(true);
             setError(null);
             try{
-                const res = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`, {
+                const res = await fetch(`https://jsonplaceholder.typicodpostse.com/?userId=${userId}`, {
                     signal: controller.signal
                 });
 

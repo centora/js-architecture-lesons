@@ -2,8 +2,8 @@ import type { ITodo } from './ITodoItem';
 
 interface ITodoItem {
     todo: ITodo;
-    onToggleTodo: (id: number) => void;
-    onDeleteTodo: (id: number) => void;
+    onToggleTodo: (id: number | string) => void;
+    onDeleteTodo: (id: number | string) => void;
 }
 
 const TodoItem = ({todo, onToggleTodo, onDeleteTodo}: ITodoItem) => {
@@ -20,7 +20,8 @@ const TodoItem = ({todo, onToggleTodo, onDeleteTodo}: ITodoItem) => {
                 
             />
             <span>{todo.text}</span>
-            <button type="button" onClick={() => {onDeleteTodo(todo.id)}}>Delete</button>
+            <button type="button" 
+            onClick={() => onDeleteTodo(todo.id)}>Delete</button>
         </li>
     )
 }
