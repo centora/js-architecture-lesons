@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import './TodoApp.css';
 import { ACTIVE, COMPLETED, ALL } from '../../constants';
 import LoadedTodos from '../LoadedTodos/LoadedTodos';
+import TodoStudy from '../TodoStudy/TodoStudy';
 
 type IFilter = ALL | ACTIVE | COMPLETED;
 
@@ -62,6 +63,12 @@ const TodoApp = () => {
 
     return (
         <>
+        <br />
+        <br />
+        <TodoStudy />
+        <br />
+        <br />
+            <hr />
             <h2>Todo List</h2>
             <TodoForm onAddTodo={onAddTodo} />
             <hr />

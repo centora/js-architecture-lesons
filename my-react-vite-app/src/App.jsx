@@ -10,6 +10,7 @@ import PostsListSWR from './components/PostsListSWR/PostsListSWR';
 import ProductDiscountCalculator from './components/ProductDiscountCalculator/ProductDiscountCalculator';
 import FetchPostById from './components/FetchPostById/FetchPostById';
 import Timer from './components/Timer/Timer';
+import UserPostsExplorer from './components/UserPostsExplorer/UserPostsExplorer';
 
 
 async function increment(previousState, formData) {
@@ -50,6 +51,9 @@ function App() {
   return (
     <>
       <section id="center">
+        <UserPostsExplorer/>
+        <br />
+        <br />
         <Timer />
         <br />
         <br />
